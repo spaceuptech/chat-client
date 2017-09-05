@@ -1,0 +1,41 @@
+.chatScreen {
+  position: relative;
+  height: 100vh;
+  @media #{$medium-and-up} {
+    height: 90vh;
+  }
+
+  nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+
+  #content {
+    height: 85vh;
+    padding-top: 64px;
+    overflow-y: auto;
+    @media #{$medium-and-up} {
+      height: 40vh;
+    }
+
+    .message {
+      padding: 10px;
+      border-radius: 10px;
+      max-width: 70%;
+      margin-top: 10px;
+    }
+  }
+
+  .inputBox {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    input {
+      width: 80%;
+    }
+  }
+}

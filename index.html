@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="./css/app.css" media="screen,projection" />
+
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+  <div id="login">
+    <div class="valign-wrapper row" style="width:100vw;height:100vh;margin-bottom:0">
+      <div class="col s12">
+        <div class="valign">
+          <div class="col s10 m4 l3 offset-s1 offset-m4 offset-l4">
+            <h4 class="center" style="color:indigo;font-size:4em">Welcome!!</h4>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="username" type="text" class="validate white" placeholder="User Name">
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="chatroom" type="text" class="validate white" placeholder="Chat Room Name">
+              </div>
+            </div>
+            <div class="row" style="margin-top:16px;padding:0 0.75rem">
+              <button type="button" class="btn col s12" onclick="login()">Join Chat Room</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="valign-wrapper row" id="chat" style="width:100vw;height:100vh;margin-bottom:0;">
+    <div class="col s12 m8 l6 offset-m2 offset-l3 chatScreen">
+      <nav>
+        <div class="nav-wrapper">
+          <a class="brand-logo" id="chatRoomName"></a>
+          <ul class="right" style="margin-right:10px">
+            <li style="cursor:pointer"><i class="material-icons" onclick="logout()">power_settings_new</i></li>
+          </ul>
+        </div>
+      </nav>
+      <div class="row" id="content">
+      </div>
+      <div class="inputBox row">
+        <div class="col s12">
+          <div class="input-field">
+            <input id="message" type="text" class="validate white" placeholder="Type Your Message...">
+            <a class="btn-floating btn-large waves-effect waves-light red right"><i class="material-icons" onclick="sendMessage()">send</i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <!--Import jQuery before materialize.js-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
+  <script src="./js/client-api.js"></script>
+  <script src="./js/app.js"></script>
+</body>
+
+</html>
