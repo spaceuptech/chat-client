@@ -6,12 +6,12 @@ var LoggedIn = false
 $("#chat").hide();
 
 // Connect to the platform
-this.ClientApi.connect('192.168.3.241', '11100', () => {
+this.ClientApi.connect('192.168.3.241', '11100', function () {
   console.log('Connected To server');
 })
 
 // Register callback with the platform
-this.ClientApi.registerCallback('chat-engine', 'login', (args) => {
+this.ClientApi.registerCallback('chat-engine', 'login', function (args) {
   console.log('Login Response', args);
 
   // Dispplay error if login failed
@@ -27,7 +27,7 @@ this.ClientApi.registerCallback('chat-engine', 'login', (args) => {
 })
 
 // Register callback with the platform
-this.ClientApi.registerCallback('chat-engine', 'chat', (args) => {
+this.ClientApi.registerCallback('chat-engine', 'chat', function (args) {
   if (LoggedIn) {
     console.log('Chat Response', args);
 
