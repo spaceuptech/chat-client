@@ -14,7 +14,7 @@ this.ClientApi.connect('192.168.3.241', '11100', function () {
 this.ClientApi.registerCallback('chat-engine', 'login', function (args) {
   console.log('Login Response', args);
 
-  // Dispplay error if login failed
+  // Display error if login failed
   if (!args.Ack) {
     Materialize.toast(args.Error, 4000)
     return
