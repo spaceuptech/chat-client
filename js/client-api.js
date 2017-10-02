@@ -25,7 +25,21 @@ function toUTF8Array(str) {
   }
   return utf8
 }
+function binaryToString(str) {
+    // Removes the spaces from the binary string
+    str = str.replace(/\s+/g, '');
+    // Pretty (correct) print binary (add a space every 8 characters)
+    str = str.match(/.{1,8}/g).join(" ");
 
+    var newBinary = str.split(" ");
+    var binaryCode = [];
+
+    for (i = 0; i < newBinary.length; i++) {
+        binaryCode.push(String.fromCharCode(parseInt(newBinary[i], 2)));
+    }
+    
+    return binaryCode.join("");
+}
 var ClientApi = {
   ws: null,
   callbacks: [],
@@ -34,12 +48,12 @@ var ClientApi = {
     ClientApi.callbacks[funcName] = cb
   },
   connect: (host, port, cb) => {
-    var url = 'ws://' + host + ':' + port + '/rpc/json'
+    var url = 'ws://' + host + ':' + port + '/api/json/websocket'
     this.ws = new WebSocket(url)
     console.log('Trying to connect')
     this.ws.onopen = cb
     this.ws.onmessage = (evt) => {
-      var obj = JSON.parse(evt.data)
+      var obj = JSON.parse(evt.data).faas
       var engine = obj.engine
       var func = obj.func
       var args = obj.args
@@ -56,10 +70,10 @@ var ClientApi = {
     }
   },
   call: (engine, func, args) => {
-    this.ws.send(JSON.stringify({
-      Engine: engine,
-      Func: func,
-      Args: this.toUTF8Array(JSON.stringify(args))
-    }))
+    this.ws.send(JSON.stringify({type: 3, faas: {
+      engine: engine,
+      func: func,
+      args: this.toUTF8Array(JSON.stringify(args))
+    }}))
   }
 }

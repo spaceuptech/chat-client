@@ -6,7 +6,7 @@ var LoggedIn = false
 $("#chat").hide();
 
 // Connect to the platform
-this.ClientApi.connect('192.168.3.241', '11100', function () {
+this.ClientApi.connect('localhost', '11100', function () {
   console.log('Connected To server');
 })
 
